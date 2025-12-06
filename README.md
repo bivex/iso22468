@@ -10,32 +10,50 @@
 
 ## Table of Contents
 
-1. [Introduction](#introduction)
-   1.1 [Purpose](#purpose)
-   1.2 [Scope](#scope)
-   1.3 [Target Audience](#target-audience)
-   1.4 [Prerequisites](#prerequisites)
-2. [Concept of Operations](#concept-of-operations)
-   2.1 [Value Stream Management Overview](#value-stream-management-overview)
-   2.2 [SDK Architecture](#sdk-architecture)
-   2.3 [Core Components](#core-components)
-3. [Procedures](#procedures)
-   3.1 [Installation](#installation)
-   3.2 [Getting Started](#getting-started)
-   3.3 [Basic Usage](#basic-usage)
-   3.4 [Advanced Usage](#advanced-usage)
-4. [Reference Information](#reference-information)
-   4.1 [API Reference](#api-reference)
-   4.2 [Calculation Procedures](#calculation-procedures)
-   4.3 [VSM Symbols](#vsm-symbols)
-   4.4 [Serialization](#serialization)
-5. [Troubleshooting](#troubleshooting)
-6. [Glossary](#glossary)
-7. [Standards Compliance](#standards-compliance)
-8. [Contributing](#contributing)
-9. [License](#license)
-10. [References](#references)
+| Section | Topic | Description |
+|---------|-------|-------------|
+| **1** | **[Introduction](#1-introduction)** | Document purpose, scope, audience, and requirements |
+| **1.1** | **[Purpose](#11-purpose)** | Goals and objectives of this SDK |
+| **1.2** | **[Scope](#12-scope)** | What is covered and what is not |
+| **1.3** | **[Target Audience](#13-target-audience)** | Who this documentation is for |
+| **1.4** | **[Prerequisites](#14-prerequisites)** | Required knowledge and software |
+| **2** | **[Concept of Operations](#2-concept-of-operations)** | Understanding VSM and SDK architecture |
+| **2.1** | **[Value Stream Management Overview](#21-value-stream-management-overview)** | VSM methodology explanation |
+| **2.2** | **[SDK Architecture](#22-sdk-architecture)** | How the SDK components work together |
+| **2.3** | **[Core Components](#23-core-components)** | Key data structures and calculations |
+| **3** | **[Procedures](#3-procedures)** | Step-by-step usage instructions |
+| **3.1** | **[Installation](#31-installation)** | How to install the SDK |
+| **3.2** | **[Getting Started](#32-getting-started)** | Basic setup and first value stream |
+| **3.3** | **[Basic Usage](#33-basic-usage)** | Essential operations and workflows |
+| **3.4** | **[Advanced Usage](#34-advanced-usage)** | Complex scenarios and optimization |
+| **4** | **[Reference Information](#4-reference-information)** | Detailed technical specifications |
+| **4.1** | **[API Reference](#41-api-reference)** | Complete API documentation |
+| **4.2** | **[Calculation Procedures](#42-calculation-procedures)** | KPI formulas and algorithms |
+| **4.3** | **[VSM Symbols](#43-vsm-symbols)** | Standard symbols and usage |
+| **4.4** | **[Serialization](#44-serialization)** | Data persistence and formats |
+| **5** | **[Troubleshooting](#5-troubleshooting)** | Common issues and solutions |
+| **6** | **[Glossary](#6-glossary)** | Key terms and definitions |
+| **7** | **[Standards Compliance](#7-standards-compliance)** | ISO compliance and validation |
+| **8** | **[Contributing](#8-contributing)** | How to contribute to the project |
+| **9** | **[License](#9-license)** | Legal information and permissions |
+| **10** | **[References](#10-references)** | Standards and bibliography |
 
+### Quick Navigation Guide
+
+| **Getting Started** | **API Reference** | **Troubleshooting** |
+|-------------------|------------------|-------------------|
+| [Installation](#31-installation) | [API Reference](#41-api-reference) | [Troubleshooting](#5-troubleshooting) |
+| [Getting Started](#32-getting-started) | [Calculations](#42-calculation-procedures) | [Common Issues](#5-troubleshooting) |
+| [Basic Usage](#33-basic-usage) | [Symbols](#43-vsm-symbols) | [Error Solutions](#5-troubleshooting) |
+| [Advanced Usage](#34-advanced-usage) | [Serialization](#44-serialization) | [Help & Support](#5-troubleshooting) |
+
+### Document Statistics
+- **Total Sections**: 10 main sections
+- **Total Subsections**: 14 subsections
+- **Code Examples**: 25+ practical examples
+- **Compliance**: ISO/IEC/IEEE 26514:2017
+
+<a name="1-introduction"></a>
 ## 1. Introduction
 
 ### 1.1 Purpose
@@ -92,6 +110,7 @@ Before using this SDK, ensure you have:
 - Familiarity with manufacturing process terminology
 - Understanding of value stream mapping concepts
 
+<a name="2-concept-of-operations"></a>
 ## 2. Concept of Operations
 
 ### 2.1 Value Stream Management Overview
@@ -137,8 +156,10 @@ Automated calculation of key performance indicators:
 - Customer Takt Time = Operating Time / Customer Demand
 - Inventory Turns = Customer Demand / Stock Quantity
 
+<a name="3-procedures"></a>
 ## 3. Procedures
 
+<a name="31-installation"></a>
 ### 3.1 Installation
 
 To install the VSM Go SDK in your Go project:
@@ -159,6 +180,7 @@ import vsm "github.com/iso22468/vsm-go-sdk"
 
 **Expected Result**: The SDK is now available in your Go module dependencies.
 
+<a name="32-getting-started"></a>
 ### 3.2 Getting Started
 
 Follow these steps to create your first VSM analysis:
@@ -217,9 +239,9 @@ processes := []vsm.Process{
     },
     {
         ID:   "assembly",
-        Name: "Assembly",
-        Type: vsm.ProcessTypeMaterial,
-        Parameters: vsm.ProcessParameters{
+                Name: "Assembly",
+                Type: vsm.ProcessTypeMaterial,
+                Parameters: vsm.ProcessParameters{
             ProcessTime:    45,
             CycleTime:      8,
             YieldFactor:    0.95,
@@ -248,6 +270,7 @@ fmt.Printf("Waste reduction potential: %.1f%%\n",
     analysis.WasteAnalysis.WasteReductionPotential)
 ```
 
+<a name="33-basic-usage"></a>
 ### 3.3 Basic Usage
 
 #### Calculating KPIs
@@ -278,12 +301,13 @@ inventory := []vsm.Inventory{
 vs.Inventory = inventory
 ```
 
+<a name="34-advanced-usage"></a>
 ### 3.4 Advanced Usage
 
 #### Future State Design
 ```go
 // Analyze current state first
-analysis, _ := analyzer.AnalyzeCurrentState(vs)
+    analysis, _ := analyzer.AnalyzeCurrentState(vs)
 
 // Create designer and design future state
 designer := vsm.NewDesigner()
@@ -348,8 +372,10 @@ for _, action := range assessment.ActionItems {
 }
 ```
 
+<a name="4-reference-information"></a>
 ## 4. Reference Information
 
+<a name="41-api-reference"></a>
 ### 4.1 API Reference
 
 #### Core Types
@@ -501,6 +527,7 @@ func (c *Calculator) CalculateLeadTime(vs *ValueStream) float64
 func (c *Calculator) CalculateValueAddedRatio(vs *ValueStream) float64
 ```
 
+<a name="42-calculation-procedures"></a>
 ### 4.2 Calculation Procedures
 
 The SDK implements all calculation procedures from ISO 22468:2020 Annex A. All calculations follow the exact formulas specified in the standard.
@@ -594,6 +621,7 @@ BDI = (Process Cycle Time × Customer Demand) ÷ Process Capacity
 ```
 Values > 1.0 indicate potential bottlenecks.
 
+<a name="43-vsm-symbols"></a>
 ### 4.3 VSM Symbols
 
 The SDK includes standard VSM symbols for mapping and visualization as defined in ISO 22468:2020.
@@ -654,6 +682,7 @@ Each symbol contains:
 - `Standard`: Compliance standard reference
 - `VisualRepresentation`: ASCII art or Unicode symbol
 
+<a name="44-serialization"></a>
 ### 4.4 Serialization
 
 The SDK provides comprehensive serialization support for saving and loading value stream data in JSON format.
@@ -751,6 +780,7 @@ serializer.Compression = vsm.CompressionGZIP
 err = serializer.SaveToFile(valueStream, "compressed_vsm.json.gz")
 ```
 
+<a name="5-troubleshooting"></a>
 ## 5. Troubleshooting
 
 This section provides solutions to common issues encountered when using the VSM Go SDK.
@@ -985,6 +1015,7 @@ If you encounter issues not covered here:
    - Minimal code example reproducing the issue
    - Expected vs. actual behavior
 
+<a name="6-glossary"></a>
 ## 6. Glossary
 
 | Term | Definition |
@@ -1021,6 +1052,7 @@ If you encounter issues not covered here:
 | **Mura** | Japanese term for unevenness or inconsistency in workflow |
 | **Muri** | Japanese term for overburdening people or equipment |
 
+<a name="7-standards-compliance"></a>
 ## 7. Standards Compliance
 
 This SDK is fully compliant with ISO 22468:2020 Value Stream Management standard:
@@ -1067,6 +1099,7 @@ The SDK includes comprehensive validation:
 - Cross-reference validation
 - Standards compliance testing
 
+<a name="8-contributing"></a>
 ## 8. Contributing
 
 We welcome contributions to the VSM Go SDK! This section outlines the process for contributing to the project.
@@ -1177,6 +1210,7 @@ This project follows a code of conduct to ensure a welcoming environment for all
 - Help newcomers learn and contribute
 - Maintain professional communication
 
+<a name="9-license"></a>
 ## 9. License
 
 This project implements the ISO 22468:2020 Value Stream Management standard and is licensed under the MIT License.
@@ -1191,6 +1225,7 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+<a name="10-references"></a>
 ## 10. References
 
 ### Primary Standards
